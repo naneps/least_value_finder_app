@@ -1,3 +1,4 @@
+import 'package:aplikasi_uts/app/modules/about/about_app_view.dart';
 import 'package:aplikasi_uts/app/modules/auth/aurh_view.dart';
 import 'package:aplikasi_uts/app/modules/home/confirmation_screen.dart';
 import 'package:aplikasi_uts/app/theme/default_theme.dart';
@@ -90,21 +91,47 @@ class _HomeViewState extends State<HomeView>
             icon: const Icon(Icons.more_vert),
             itemBuilder: (context) => [
               PopupMenuItem(
-                  child: InkWell(
-                onTap: () {
-                  logout();
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("keluar"),
-                    Icon(
-                      Icons.exit_to_app,
-                      color: DefaultTheme.primaryColor,
-                    )
-                  ],
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AboutAppView(
+                          nama: "Contoh",
+                          nim: "Contoh",
+                        ),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Tentang Aplikasi"),
+                      Icon(
+                        Icons.info_outline_rounded,
+                        color: DefaultTheme.primaryColor,
+                      )
+                    ],
+                  ),
                 ),
-              )),
+              ),
+              PopupMenuItem(
+                child: InkWell(
+                  onTap: () {
+                    logout();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("keluar"),
+                      Icon(
+                        Icons.exit_to_app,
+                        color: DefaultTheme.primaryColor,
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ],
@@ -194,6 +221,9 @@ class _HomeViewState extends State<HomeView>
                         if (value!.isEmpty) {
                           return "Silakan masukkan nilai 1";
                         }
+                        if (double.tryParse(value) == null) {
+                          return "Silakan masukkan angka";
+                        }
                         return null;
                       },
                       onSaved: (value) => _num1 = double.parse(value!),
@@ -205,6 +235,10 @@ class _HomeViewState extends State<HomeView>
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Silakan masukkan nilai 2";
+                        }
+
+                        if (double.tryParse(value) == null) {
+                          return "Silakan masukkan angka";
                         }
                         return null;
                       },
@@ -218,6 +252,9 @@ class _HomeViewState extends State<HomeView>
                         if (value!.isEmpty) {
                           return "Silakan masukkan nilai 3";
                         }
+                        if (double.tryParse(value) == null) {
+                          return "Silakan masukkan angka";
+                        }
                         return null;
                       },
                       onSaved: (value) => _num3 = double.parse(value!),
@@ -229,6 +266,9 @@ class _HomeViewState extends State<HomeView>
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Sil akan masukkan nilai 4";
+                        }
+                        if (double.tryParse(value) == null) {
+                          return "Silakan masukkan angka";
                         }
                         return null;
                       },
