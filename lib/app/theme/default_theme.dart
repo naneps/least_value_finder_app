@@ -1,5 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DefaultTheme {
   static Color primaryColor = Color.fromARGB(255, 112, 136, 254);
@@ -28,6 +29,7 @@ class DefaultTheme {
     errorColor: errorColor,
     backgroundColor: lightColor,
     scaffoldBackgroundColor: lightColor,
+    fontFamily: GoogleFonts.poppins().fontFamily,
     textTheme: TextTheme(
       headline1: TextStyle(
         color: primaryTextColor,
